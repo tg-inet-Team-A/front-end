@@ -50,6 +50,15 @@ export default {
     theme: {
       dark: false,
       themes: {
+        light: {
+          primary: '#42A5F5',
+          secondary: '#424242',
+          accent: '#82B1FF',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107',
+        },
         dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,

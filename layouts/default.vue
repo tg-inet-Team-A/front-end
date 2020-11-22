@@ -1,8 +1,11 @@
 <template>
   <v-app>
     <header>
-      <v-app-bar>
-        <v-toolbar-title>みんながんばってるよ</v-toolbar-title>
+      <v-app-bar color="primary">
+        <v-toolbar-title
+        class="white--text">
+          Team-A
+        </v-toolbar-title>
       </v-app-bar>
     </header>
     <nuxt />
