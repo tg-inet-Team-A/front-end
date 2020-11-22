@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <header>
-      <v-app-bar color="primary">
+      <v-app-bar flat color="primary">
         <v-toolbar-title
         class="white--text">
-          Team-A
+          ひとりじゃないよ
         </v-toolbar-title>
       </v-app-bar>
     </header>

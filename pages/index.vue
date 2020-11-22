@@ -1,5 +1,15 @@
 <template>
   <div>
+    <v-layout justify-center>
+      <v-card class="mx-auto my-auto" outlined width="500">
+        <v-card-title>
+          このサービスについて
+        </v-card-title>
+        <v-card-text>
+          このサービスは，朝早く起きて活動を開始する人が，つながりを感じることができず一人だけ頑張ってる孤独感を解消するために，同じ地区で朝早くから活動しているという情報を手に入れることのできるサービスです．
+        </v-card-text>
+      </v-card>
+    </v-layout>
     <v-row>
       <v-col cols="3"></v-col>
       <v-col cols="6">
@@ -26,15 +36,14 @@
           <v-avatar color="primary" size="40" class="white--text">
             <h3>{{res.wakeup_people}}</h3>
           </v-avatar>
-          人の方が起きています。
+          人の方が活動しています。
         </v-card-text>
       </v-card>
         <v-layout justify-center>
-          <iframe id="inlineFrameExample"
-              title="Inline Frame Example"
+          <iframe
               width="450"
               height="300"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
+              src="http://localhost:5000/mapping">
           </iframe>
         </v-layout>
     </template>
@@ -57,6 +66,7 @@ export default {
       console.log("set_greeting");
       const now = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
       var hour = new Date(now).getHours();
+      hour = 9;
       if (4 < hour && hour <= 10) {
         this.greeting = "おはようございます"
       } else if (10 < hour && hour <= 18) {
@@ -66,25 +76,28 @@ export default {
       }
     },
     async get_erea_all() {
-      return [
-        {"erea_id":0, "erea_name":"東京"},
-        {"erea_id":1, "erea_name":"大阪"}
-      ]
+      console.log("get_erea_all");
+      const that = this;
+      this.$axios.$get("http://localhost:5000/erea/all")
+      .then(function (response) {
+        console.log(response);
+        that.ereas = response;
+      });
     },
     async get_count_people() {
       console.log("get_count_people");
       const that = this;
       var res = 1;
       this.$axios.$get("http://localhost:5000/erea/"+that.erea.erea_id+"/wakeup_people")
-        .then(function (response) {
-          console.log(response);
-          that.res = response;
-        });
+      .then(function (response) {
+        console.log(response);
+        that.res = response;
+      });
     },
   },
   async mounted() {
     await this.set_greeting();
-    this.ereas = await this.get_erea_all();
+    await this.get_erea_all();
   }
 }
 </script>
