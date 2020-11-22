@@ -3,10 +3,15 @@
     <v-layout justify-center>
       <v-card class="mx-auto my-auto" outlined width="500">
         <v-card-title>
+          <img src="@/assets/image/pattyo_icon.png" class="pattyo-icon">
           このサービスについて
         </v-card-title>
         <v-card-text>
-          このサービスは，朝早く起きて活動を開始する人が，つながりを感じることができず一人だけ頑張ってる孤独感を解消するために，同じ地区で朝早くから活動しているという情報を手に入れることのできるサービスです．
+          このサービスは
+          <strong class="text-emphasis">朝早く起きて活動を開始する人</strong>
+          が，つながりを感じることができず一人だけ頑張ってる
+          <strong class="text-emphasis">孤独感を解消</strong>
+          するために，同じ地区で朝早くから活動しているという情報を手に入れることのできるサービスです．
         </v-card-text>
       </v-card>
     </v-layout>
@@ -101,3 +106,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.text-emphasis {
+  font-size: 1.2em;
+  background: linear-gradient(transparent 75%, #f89090 60%);
+}
+</style>
